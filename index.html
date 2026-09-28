@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ GYARU Y2K 100B FLEX SIMULATOR ⚡</title>
+    <!-- Importing Pixel-style and Serif-style Google Fonts for that premium, non-tacky Y2K vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DungGeunMo&family=Playfair+Display:ital,wght@0,700;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #ffffff;
+            --bg-dot: #ffebee;
+            --cyber-hotpink: #ff2a7a;
+            --baby-pink: #ffb6c1;
+            --neon-blue: #00f0ff;
+            --metallic-silver: #d1d5db;
+            --text-dark: #121212;
+            --border-pixel: 3px solid #121212;
+        }
+
+        /* Y2K Cyberspace Dot Matrix Background */
+        body {
+            background-color: var(--bg-base);
+            background-image: radial-gradient(var(--bg-dot) 15%, transparent 16%);
+            background-size: 16px 16px;
+            color: var(--text-dark);
+            font-family: 'DungGeunMo', -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Cyber Liquid Crystal Dashboard */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #121212;
+            border-bottom: 4px solid var(--cyber-hotpink);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .balance-title {
+            font-family: 'Share Tech Mono', sans-serif;
+            font-size: 13px;
+            color: var(--metallic-silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .balance-amount {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 38px;
+            font-weight: bold;
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+            margin: 0;
+        }
+
+        .status-bar {
+            font-size: 12px;
+            color: var(--baby-pink);
+            margin: 2px 0 0 0;
+        }
+
+        /* Cute Sound & Controller Bar */
+        .control-panel {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .audio-btn {
+            background: var(--cyber-hotpink);
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            font-family: 'DungGeunMo', sans-serif;
+            font-size: 12px;
+            padding: 4px 12px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #000;
+            border-radius: 20px;
+        }
+
+        .audio-btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 #000;
+        }
+
+        /* Main Container */
+        main {
+            margin-top: 170px;
+            max-width: 1100px;
+            width: 90%;
+            padding-bottom: 80px;
+        }
+
+        /* Neo-Gyarucore Styling Title */
+        .title-section {
+            text-align: center;
+            margin-bottom: 40px;
+            border: var(--border-pixel);
+            background: #ffffff;
+            padding: 25px;
+            box-shadow: 7px 7px 0 var(--cyber-hotpink);
+            position: relative;
+        }
+
+        .title-section::before {
+            content: "★ 𝒢𝒶𝓁𝒸𝑜𝓇𝑒 𝒵𝑜𝓃𝑒 ★";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--cyber-hotpink);
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            padding: 2px 10px;
+            border: 2px solid #000;
+        }
+
+        .title-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 32px;
+            margin: 5px 0;
+            color: var(--cyber-hotpink);
+        }
+
+        .title-section p {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0 0 0;
+        }
+
+        /* Categories and Grid layout */
+        .category-box {
+            margin-bottom: 40px;
+        }
+
+        .category-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            background: #121212;
+            display: inline-block;
+            padding: 6px 16px;
+            border: 2px solid var(--cyber-hotpink);
+            transform: skew(-5deg);
+            margin-bottom: 20px;
+            box-shadow: 3px 3px 0 var(--baby-pink);
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        /* Premium 2000s Sticker Pack Grid Card */
+        .item-card {
+            background: #ffffff;
+            border: var(--border-pixel);
+            border-radius: 0px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            box-shadow: 4px 4px 0 #121212;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .item-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--cyber-hotpink);
+        }
+
+        .item-tag {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #121212;
+            color: var(--neon-blue);
+            font-size: 10px;
+            padding: 1px 5px;
+        }
+
+        .item-viewscreen {
+            width: 100%;
+            height: 110px;
+            background: #f7f7f7;
+            border: 2px dashed var(--baby-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item-name {
+            font-size: 15px;
+            font-weight: bold;
+            height: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .item-price {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            color: var(--cyber-hotpink);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .qty-monitor {
+            width: 85%;
+            background: #121212;
+            color: #ffffff;
+            text-align: center;
+            font-size: 11px;
+            padding: 4px 0;
+            margin-bottom: 10px;
+            border: 1px solid var(--cyber-hotpink);
+        }
+
+        /* Pad Interface Buttons */
+        .pad-controls {
+            display: flex;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .pad-btn {
+            flex: 1;
+            border: 2px solid #121212;
+            padding: 8px 0;
+            font-family: 'DungGeunMo', sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #121212;
+        }
+
+        .pad-btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 #121212;
+        }
+
+        .btn-minus {
+            background: #ffffff;
+            color: #555555;
+        }
+
+        .btn-plus {
+            background: var(--baby-pink);
+            color: #121212;
+        }
+
+        .btn-plus:hover {
+            background: var(--cyber-hotpink);
+            color: white;
+        }
+
+        /* Invoice Section */
+        .invoice-box {
+            background: #ffffff;
+            border: var(--border-pixel);
+            padding: 30px;
+            margin-top: 60px;
+            box-shadow: 8px 8px 0 #121212;
+            position: relative;
+        }
+
+        .invoice-box::after {
+            content: "✦✦✦✦";
+            position: absolute;
+            bottom: -15px;
+            right: 30px;
+            color: var(--cyber-hotpink);
+            font-size: 20px;
+        }
+
+        .invoice-head {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 24px;
+            text-align: center;
+            border-bottom: 3px dashed #121212;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            color: var(--cyber-hotpink);
+        }
+
+        .invoice-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .invoice-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            font-size: 14px;
+            border-bottom: 1px solid var(--metallic-silver);
+        }
+
+        .invoice-summary {
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 3px dashed #121212;
+            color: #121212;
+        }
+
+        .action-tray {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .snap-btn {
+            background: #121212;
+            color: var(--neon-blue);
+            border: 3px solid var(--cyber-hotpink);
+            font-family: 'DungGeunMo', sans-serif;
+            font-size: 15px;
+            padding: 12px 30px;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 var(--baby-pink);
+        }
+
+        .snap-btn:hover {
+            background: var(--cyber-hotpink);
+            color: white;
+        }
+
+        /* YouTube Background Hidden Frame */
+        #bgm-frame {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hidden audio/video interface for Chiikawa BGM Stream -->
+    <iframe id="bgm-frame" src="" allow="autoplay"></iframe>
+
+    <header>
+        <div class="dashboard-container">
+            <p class="balance-title">✦ ELECTRONIC CURRENT CASH SYSTEM ✦</p>
+            <p class="balance-amount" id="main-balance">100,000,000,000 원</p>
+            <p class="status-bar" id="percentage-bar">SPENT LOG: 0원 (0.0000%)</p>
+            <div class="control-panel">
+                <button class="audio-btn" onclick="toggleBgm()">🎶 치이카와 BGM REPEAT 켜기/끄기</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="title-section">
+            <h1>𝒴𝒦𝟤𝒦 𝒢𝒶𝓁𝒸𝑜𝓇𝑒 𝟣𝟢𝟢𝐵 𝐹𝓁𝑒𝓍</h1>
+            <p>치이카와 덕질부터 일본 현지 올인, 갸루 플렉스까지 1,000억 원 무제한 도파민 쇼핑 라인업</p>
+        </div>
+
+        <div id="catalog-hook"></div>
+
+        <!-- System Digital Receipt -->
+        <div class="invoice-box" id="receipt-capture-zone">
+            <div class="invoice-head">✧ CUSTOM TRANSACTION RECEIPT ✧</div>
+            <ul class="invoice-list" id="invoice-items">
+                <li style="color: #888888; text-align: center; padding: 30px 0; font-style: italic;">카트에 물품이 비어있습니다.</li>
+            </ul>
+            <div class="invoice-summary">
+                <span>TOTAL SPENT</span>
+                <span id="invoice-total">0 원</span>
+            </div>
+            <div class="action-tray">
+                <button class="snap-btn" onclick="saveReceiptImage()">📸 영수증 이미지 보관하기 (.png)</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- html2canvas module for high-fidelity native canvas screen capture -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const BUDGET_CEILING = 100000000000;
+        let currentWallet = BUDGET_CEILING;
+        let bgmPlaying = false;
+
+        const productCatalog = [
+            {
+                category: "🍥 𝓒𝓱𝓲𝓲𝓴𝓪𝔀𝓪 & 𝓞𝓽𝓪𝓴𝓾 극락 지름 코너",
+                items: [
+                    { id: "chiikawa_all", name: "치이카와·먼작귀 인형/굿즈 역대 전종 풀세트", price: 250000000, emoji: "🐹", rarity: "SSR" },
+                    { id: "sanrio_rent", name: "도쿄 산리오 퓨로랜드 반나절 전체 대관", price: 1200000000, emoji: "🏰", rarity: "VVIP" },
+                    { id: "photocard", name: "최애 아이돌 미공포·희귀 럭드 포카 전종 즉시 매입", price: 80000000, emoji: "💎", rarity: "UR" },
+                    { id: "animate", name: "홍대 애니메이트 매장 가판대 전체 통째로 인수", price: 450000000, emoji: "🛍️", rarity: "SR" },
+                    { id: "front_row", name: "국내외 모든 최애 콘서트 평생 고정 1열 지정석", price: 2000000000, emoji: "🎤", rarity: "LEGEND" }
+                ]
+            },
+            {
+                category: "✈️ 𝓘𝓳𝓲𝓷-𝓴𝓪𝔁𝓪 일본 원정 도파민 투어",
+                items: [
+                    { id: "private_jet", name: "도쿄행 왕복 항공편 전 좌석 퍼스트클래스 전세기", price: 1500000000, emoji: "🛩️", rarity: "VVIP" },
+                    { id: "gacha_card", name: "일본 전역 가챠 머신 무제한 연동 프리패스 카드", price: 50000000, emoji: "🪙", rarity: "SR" },
+                    { id: "usj_pass", name: "USJ 닌텐도 월드 독점 입장 및 익스프레스 무한권", price: 300000000, emoji: "🍄", rarity: "UR" },
+                    { id: "ryokan", name: "교토 하이엔드 전통 료칸 스위트룸 1달 전세", price: 600000000, emoji: "🏮", rarity: "SSR" },
+                    { id: "akiba_taxi", name: "아키하바라 쇼핑 전용 개인 24시간 리무진 택시", price: 35000000, emoji: "🚕", rarity: "N" }
+                ]
+            },
+            {
+                category: "🎀 𝓨𝓓𝓚 𝓖𝓪𝓵𝓬𝓸𝓻𝓮 하이틴 로망 라이프",
+                items: [
+                    { id: "olive_cart", name: "올리브영 메가 세일 진열 카트 통째로 드롭다운", price: 30000000, emoji: "💄", rarity: "SR" },
+                    { id: "mara_pass", name: "마라탕 + 꿔바로우 + 탕후루 평생 평생 무제한권", price: 15000000, emoji: "🍡", rarity: "N" },
+                    { id: "hermes_bag", name: "에르메스 버킨백/샤넬 클래식백 오픈런 패스", price: 650000000, emoji: "👜", rarity: "UR" },
+                    { id: "pink_porsche", name: "파스텔 네온 핑크 커스텀 래핑 포르쉐 타이칸", price: 280000000, emoji: "🚙", rarity: "SSR" }
+                ]
+            },
+            {
+                category: "🏰 𝓡𝓮𝓪𝓵 𝓔𝓼𝓽𝓪𝓽𝓮 조 단위 건물주 테크",
+                items: [
+                    { id: "hongdae_bld", name: "홍대 메인 스트리트 초호화 꼬마빌딩 건물주 되기", price: 38000000000, emoji: "🏢", rarity: "MYTH" },
+                    { id: "gold_vault", name: "비상금 대용 안전자산 실물 골드바 200kg 금고", price: 22000000000, emoji: "🔱", rarity: "MYTH" },
+                    { id: "label_ent", name: "내 아이디어만으로 굴러가는 개인 엔터사 설립", price: 15000000000, emoji: "💿", rarity: "LEGEND" }
+                ]
+            }
+        ];
+
+        const inventory = {};
+        productCatalog.forEach(cat => {
+            cat.items.forEach(i => inventory[i.id] = 0);
+        });
+
+        const catalogContainer = document.getElementById('catalog-hook');
+
+        productCatalog.forEach(cat => {
+            const block = document.createElement('div');
+            block.className = 'category-box';
+
+            const sectionName = document.createElement('div');
+            sectionName.className = 'category-name';
+            sectionName.innerText = cat.category;
+            block.appendChild(sectionName);
+
+            const grid = document.createElement('div');
+            grid.className = 'item-grid';
+
+            cat.items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
+                card.innerHTML = `
+                    <div class="item-tag">${item.rarity}</div>
+                    <div class="item-viewscreen">${item.emoji}</div>
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-price">${displayWon(item.price)}</div>
+                    <div class="qty-monitor" id="qty-${item.id}">🛒 담은 수량: 0개</div>
+                    <div class="pad-controls">
+                        <button class="pad-btn btn-minus" onclick="changeQty('${item.id}', ${item.price}, -1)">빼기</button>
+                        <button class="pad-btn btn-plus" onclick="changeQty('${item.id}', ${item.price}, 1)">담기</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            block.appendChild(grid);
+            catalogContainer.appendChild(block);
+        });
+
+        function displayWon(val) {
+            if (val >= 100000000) {
+                const b = Math.floor(val / 100000000);
+                const m = Math.floor((val % 100000000) / 10000);
+                return m > 0 ? `${b}억 ${m}만 원` : `${b}억 원`;
+            }
+            return `${(val / 10000).toLocaleString()}만 원`;
+        }
+
+        function refreshConsole() {
+            document.getElementById('main-balance').innerText = `${currentWallet.toLocaleString()} 원`;
+            
+            const totalSpent = BUDGET_CEILING - currentWallet;
+            const ratio = ((totalSpent / BUDGET_CEILING) * 100).toFixed(4);
+            document.getElementById('percentage-bar').innerText = `SPENT LOG: ${totalSpent.toLocaleString()}원 (${ratio}%)`;
+            document.getElementById('invoice-total').innerText = `${totalSpent.toLocaleString()} 원`;
+
+            const listZone = document.getElementById('invoice-items');
+            listZone.innerHTML = '';
+
+            let itemExists = false;
+            productCatalog.forEach(cat => {
+                cat.items.forEach(item => {
+                    const count = inventory[item.id];
+                    if (count > 0) {
+                        itemExists = true;
+                        const row = document.createElement('li');
+                        row.className = 'invoice-row';
+                        row.innerHTML = `
+                            <span>${item.emoji} <b>${item.name}</b> x ${count}</span>
+                            <span style="font-family:'Share Tech Mono'; color:var(--cyber-hotpink); font-weight:bold;">${displayWon(item.price * count)}</span>
+                        `;
+                        listZone.appendChild(row);
+                    }
+                });
+            });
+
+            if (!itemExists) {
+                listZone.innerHTML = '<li style="color: #888888; text-align: center; padding: 30px 0; font-style: italic;">카트에 물품이 비어있습니다.</li>';
+            }
+        }
+
+        window.changeQty = function(id, price, delta) {
+            if (delta === 1) {
+                if (currentWallet >= price) {
+                    currentWallet -= price;
+                    inventory[id]++;
+                } else {
+                    alert("⚠️ SYSTEM ERROR: 1000억 원의 한도액을 초과했습니다!");
+                    return;
+                }
+            } else if (delta === -1) {
+                if (inventory[id] > 0) {
+                    currentWallet += price;
+                    inventory[id]--;
+                }
+            }
+            document.getElementById(`qty-${id}`).innerText = `🛒 담은 수량: ${inventory[id]}개`;
+            refreshConsole();
+        };
+
+        // Chiikawa stream audio control logic
+        window.toggleBgm = function() {
+            const frame = document.getElementById('bgm-frame');
+            if (!bgmPlaying) {
+                // Safe royalty-free chiikawa synth loop source URL
+                frame.src = "https://www.youtube.com/embed/57I_bNWeX_U?autoplay=1&loop=1&playlist=57I_bNWeX_U";
+                bgmPlaying = true;
+                alert("🎶 치이카와 BGM 재생 시스템 가동! (사운드가 안 들리면 브라우저 상단 볼륨 허용을 눌러주세요)");
+            } else {
+                frame.src = "";
+                bgmPlaying = false;
+                alert("🔇 BGM을 일시 정지했습니다.");
+            }
+        };
+
+        // Modern dynamic client-side image capturing
+        window.saveReceiptImage = function() {
+            const target = document.getElementById('receipt-capture-zone');
+            
+            // Temporarily hide action buttons for beautiful native clean shot
+            const actionButtons = target.querySelector('.action-tray');
+            if (actionButtons) actionButtons.style.display = 'none';
+
+            html2canvas(target, {
+                backgroundColor: "#ffffff",
+                scale: 2 // Crisp high-definition retina print quality
+            }).then(canvas => {
+                if (actionButtons) actionButtons.style.display = 'flex';
+                
+                const link = document.createElement('a');
+                link.download = 'galcore_100b_receipt.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                if (actionButtons) actionButtons.style.display = 'flex';
+                alert("이미지 저장 중 오류가 발생했습니다: " + err);
+            });
+        };
+    </script>
+</body>
+</html>
